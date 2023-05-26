@@ -1,16 +1,15 @@
-# calc
+Steps to setup this project in your local system with VS Code:
 
-A new Flutter project.
+1. Install Git and VS Code
 
-## Getting Started
+2. Download Flutter SDK zip
 
-This project is a starting point for a Flutter application.
+3. Set up environment variable for flutter so we can use the 'flutter' command from cmd
 
-A few resources to get you started if this is your first Flutter project:
+4. Clone this repo using either https or ssh. For https use this command in the project folder:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- git clone https://github.com/Four-Eyed-Gems/calc.git
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+5. Run the flutter project using following command:
+
+- Flutter run
