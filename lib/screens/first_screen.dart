@@ -1,3 +1,5 @@
+import 'package:awesome_ripple_animation/awesome_ripple_animation.dart';
+import 'package:calc/screens/second_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,21 +32,40 @@ class _FirstScreenState extends State<FirstScreen> {
             style: textStyle
           ),
           const Spacer(),
-          Container(
-            height: size.height / 8,
-            width: size.width / 5,
-            decoration: const BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(60)
-              )
-            ),
-            padding: const EdgeInsets.only(left: 7.0,right: 7.0),
-            child: const CircleAvatar(
-              backgroundColor: Colors.white,
-              child: Icon(Icons.arrow_forward_ios,size: 35.0,color: Colors.black),
-            ),
-          )
+          Stack(
+            children: [
+              Container(
+                height: size.height / 8,
+                width: size.width / 5,
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(60)
+                  )
+                ),
+                padding: const EdgeInsets.only(left: 7.0,right: 7.0),
+              ),
+              Positioned(
+                top: 13.0,
+                right: 5.0,
+                left: 5.0,
+                child: InkWell(
+                  onTap: () async {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => SecondScreen()
+                      ),
+                    );
+                  },
+                  child: const CircleAvatar(
+                    radius: 35.0,
+                    backgroundColor: Colors.white,
+                    child: Icon(Icons.arrow_forward_ios,size: 35.0,color: Colors.black),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
