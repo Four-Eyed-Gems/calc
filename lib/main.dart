@@ -1,12 +1,27 @@
+import 'package:calc/helper/prov.dart';
 import 'package:calc/screens/first_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    home:  FirstScreen(),
-    debugShowCheckedModeBanner: false,
-  ));
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<Helper>(create: (_) => Helper(),),
+      ],
+      child: const MaterialApp(
+        home: FirstScreen(),
+        debugShowCheckedModeBanner: false,
+      ),
+
+    );
+  }
 }
 
