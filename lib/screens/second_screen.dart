@@ -44,8 +44,8 @@ class _SecondScreenState extends State<SecondScreen> {
                     SizedBox(height: size.height * 0.01),
                     Container(
                       height: size.height / 18,
+                      padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.013),
                       //  margin: const EdgeInsets.symmetric(horizontal: 10.0),
-                      padding: const EdgeInsets.all(6.0),
                       decoration: BoxDecoration(
                         border: Border.all(color: nameBool ? Colors.red : Colors.blue,width: 1.8),
                           color: Colors.white, borderRadius: BorderRadius.circular(15)),
@@ -58,12 +58,11 @@ class _SecondScreenState extends State<SecondScreen> {
                             });
                           }
                         },
-                        style: const TextStyle(color: Colors.black),
-                        decoration:  const InputDecoration(
+                        style: inputTextStyle,
+                        decoration:   InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Enter Name...',
-                          hintStyle: TextStyle(
-                              color: Colors.black),
+                          hintStyle: inputTextStyle,
                           contentPadding: EdgeInsets.all(10.0)
                         ),
                       ),
@@ -82,15 +81,14 @@ class _SecondScreenState extends State<SecondScreen> {
                     SizedBox(height: size.height * 0.01),
                     Container(
                       height: size.height / 18,
-                      //  margin: const EdgeInsets.symmetric(horizontal: 10.0),
-                      padding: const EdgeInsets.all(6.0),
+                      padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.012),
                       decoration: BoxDecoration(
                           border: Border.all(color: pNameBool ? Colors.red : Colors.blue,width: 1.8),
                           color: Colors.white, borderRadius: BorderRadius.circular(15)),
                       // decoration: Style.decoration,
                       child:  TextField(
                         controller: pName,
-                        style: const TextStyle(color: Colors.black),
+                        style: inputTextStyle,
                         onChanged: (value){
                           if(pName.text.isNotEmpty){
                             setState(() {
@@ -98,12 +96,11 @@ class _SecondScreenState extends State<SecondScreen> {
                             });
                           }
                         },
-                        decoration:  const InputDecoration(
+                        decoration:   InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Enter Partner Name...',
-                            hintStyle: TextStyle(
-                                color: Colors.black),
-                            contentPadding: EdgeInsets.all(10.0)
+                            hintStyle: inputTextStyle,
+                            contentPadding: const EdgeInsets.all(10.0)
                         ),
                       ),
                     ),
@@ -120,10 +117,10 @@ class _SecondScreenState extends State<SecondScreen> {
               InkWell(
                 onTap: () async {
                   if(name.text.isNotEmpty && pName.text.isNotEmpty){
-                    if(name.text.length <= 2){
+                    if(name.text.length <= 2 || name.text.contains(" ")){
                       flutterToast("Enter name more than 2 Characters...");
                     }
-                    else if(pName.text.length <= 2){
+                    else if(pName.text.length <= 2 || pName.text.contains(" ")){
                       flutterToast("Enter Partner Name more than 2 Characters...");
                     }
                     else{
@@ -169,6 +166,12 @@ class _SecondScreenState extends State<SecondScreen> {
         fontSize: 25,
         color: Colors.black,
         fontWeight: FontWeight.w300
+      )
+  );
+
+  final inputTextStyle = GoogleFonts.coiny(
+      textStyle: const TextStyle(
+        color: Colors.black,
       )
   );
 

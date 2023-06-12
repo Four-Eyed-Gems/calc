@@ -72,7 +72,7 @@ class _FirstScreenState extends State<FirstScreen> {
                         style: TextStyle(color: Colors.white,fontSize: 18.0),
                       ),
                        SizedBox(width: 8),
-                       Icon(CupertinoIcons.arrowshape_turn_up_right,color: Colors.white),
+                       Icon(Icons.arrow_forward_ios_outlined,color: Colors.white),
                     ],
                   ),
                 ),
