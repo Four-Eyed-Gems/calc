@@ -5,15 +5,15 @@ class Helper extends ChangeNotifier {
   //var str1 = "priyesh";
   //var str2 = "shirley";
 
-  var final_percentage;
+  var finalPercentage = 0;
 
   helper(String name, String partnerName) {
-    final_percentage = (calculates(name) + calculates(partnerName)) / 2;
+    finalPercentage = (getPercentage(name) + getPercentage(partnerName)) / 2;
 
     notifyListeners();
   }
 
-  calculates(name) {
+  getPercentage(name) {
     num totalAsciiValue = 0;
     for (var i = 0; i < name.length; i++) {
       totalAsciiValue += name.codeUnitAt(i);
