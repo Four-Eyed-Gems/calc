@@ -5,7 +5,7 @@ class Helper extends ChangeNotifier {
   //var str1 = "priyesh";
   //var str2 = "shirley";
 
-  var finalPercentage = 0;
+  var finalPercentage = 0.0;
 
   helper(String name, String partnerName) {
     finalPercentage = (getPercentage(name) + getPercentage(partnerName)) / 2;
