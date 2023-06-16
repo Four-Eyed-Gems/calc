@@ -51,7 +51,7 @@ class _FirstScreenState extends State<FirstScreen> {
                 },
                 child: Container(
                   height: size.height * 0.08,
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.only(left: 10,right: 10.0),
                   decoration: const BoxDecoration(
                       color: Colors.red,
                       borderRadius: BorderRadius.all(Radius.circular(16)),
@@ -66,13 +66,16 @@ class _FirstScreenState extends State<FirstScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const[
-                       Text(
-                        "Explore Now",
-                        style: TextStyle(color: Colors.white,fontSize: 18.0),
+                    children: [
+                       Container(
+                         padding: const EdgeInsets.only(bottom: 10.0),
+                         child: Text(
+                          "Explore Now",
+                          style: GoogleFonts.coiny(color: Colors.white,fontSize: 20.0),
                       ),
-                       SizedBox(width: 8),
-                       Icon(Icons.arrow_forward_ios_outlined,color: Colors.white),
+                       ),
+                       const SizedBox(width: 8),
+                       const Icon(Icons.arrow_forward_ios_outlined,color: Colors.white),
                     ],
                   ),
                 ),

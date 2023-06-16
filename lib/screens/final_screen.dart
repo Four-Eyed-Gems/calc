@@ -1,8 +1,5 @@
 import 'dart:math';
-
 import 'package:calc/helper/prov.dart';
-import 'package:calc/screens/second_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +8,7 @@ class FinalScreen extends StatefulWidget {
   const FinalScreen({Key? key}) : super(key: key);
 
   @override
-  _FinalScreenState createState() => _FinalScreenState();
+  State<FinalScreen> createState() => _FinalScreenState();
 }
 
 class _FinalScreenState extends State<FinalScreen> {
@@ -22,16 +19,15 @@ class _FinalScreenState extends State<FinalScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: SingleChildScrollView(
-          child: Container(
-            height: MediaQuery.of(context).size.height,
-            child: Stack(
-              children: [
-                Consumer<Helper>(builder: (context, data, _) {
-                  final random =  Random();
-                  var element = provMdl.quotes[random.nextInt(provMdl.quotes.length)];
-                  print(element);
-                  return Column(
+        body: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: Stack(
+            children: [
+              Consumer<Helper>(builder: (context, data, _) {
+                final random =  Random();
+                var element = provMdl.quotes[random.nextInt(provMdl.quotes.length)];
+                return SingleChildScrollView(
+                  child: Column(
                     children: [
                       SizedBox(height: size.height * 0.05),
                       Image.asset(
@@ -70,31 +66,29 @@ class _FinalScreenState extends State<FinalScreen> {
                       ),
                       // SizedBox(height: size.height * 0.13),
                     ],
-                  );
-                }),
-                Positioned(
-                  bottom: MediaQuery.of(context).size.height / 20,
-                  right: MediaQuery.of(context).size.width / 7,
-                  //top: 560,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                      //Navigator.pushReplacement(context, MaterialPageRoute(builder: ((context) => SecondScreen())));
-                    },
-                    child: Container(
-                      width: size.width * 0.7,
-                      padding: EdgeInsets.all(4.0),
-                      height: size.height * 0.065,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                          color: Colors.redAccent.withOpacity(0.5)),
-                      child: Text("Try Again",
-                          style: textStyle, textAlign: TextAlign.center),
-                    ),
                   ),
-                )
-              ],
-            ),
+                );
+              }),
+              Positioned(
+                bottom: 10,
+                right: MediaQuery.of(context).size.width / 7,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: size.width * 0.7,
+                    padding: const EdgeInsets.all(4.0),
+                    height: size.height * 0.065,
+                    decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.all(Radius.circular(30.0)),
+                        color: Colors.redAccent.withOpacity(0.5)),
+                    child: Text("Try Again",
+                        style: textStyle, textAlign: TextAlign.center),
+                  ),
+                ),
+              )
+            ],
           ),
         ),
       ),
