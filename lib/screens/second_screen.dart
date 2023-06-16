@@ -125,6 +125,7 @@ class _SecondScreenState extends State<SecondScreen> {
                     }
                     else{
                       await Provider.of<Helper>(context,listen: false).helper(name.text.toString().toLowerCase(),pName.text.toString().toLowerCase());
+                      await Provider.of<Helper>(context,listen: false).getQuotes();
                       Navigator.push(context, MaterialPageRoute(builder: ((context) => const FinalScreen())));
                     }
                   }

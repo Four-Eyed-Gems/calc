@@ -25,6 +25,22 @@ class Helper extends ChangeNotifier {
       return totalAsciiValue;
     }
   }
+
+  List quotes = [];
+  getQuotes(){
+    quotes = [];
+    quotes.add("Love is not about how many days, months, or years you've been together. It's all about how much you love each other every day.");
+    quotes.add("To love and be loved is to feel the sun from both sides.");
+    quotes.add("The greatest happiness of life is the conviction that we are loved; loved for ourselves, or rather, loved in spite of ourselves.");
+    quotes.add("Love is not finding someone to live with; it's finding someone you can't live without.");
+    quotes.add("Love is composed of a single soul inhabiting two bodies.");
+    quotes.add("Being deeply loved by someone gives you strength while loving someone deeply gives you courage.");
+    quotes.add("In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine.");
+    quotes.add("Love is the answer, and you know that for sure; Love is a flower, you've got to let it grow.");
+    quotes.add("Love is like the wind, you can't see it but you can feel it.");
+
+    notifyListeners();
+  }
 }
 
 flutterToast(String str) {
