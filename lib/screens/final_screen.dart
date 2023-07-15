@@ -24,8 +24,9 @@ class _FinalScreenState extends State<FinalScreen> {
           child: Stack(
             children: [
               Consumer<Helper>(builder: (context, data, _) {
-                final random =  Random();
-                var element = provMdl.quotes[random.nextInt(provMdl.quotes.length)];
+                final random = Random();
+                var element =
+                    provMdl.quotes[random.nextInt(provMdl.quotes.length)];
                 return SingleChildScrollView(
                   child: Column(
                     children: [
@@ -40,7 +41,7 @@ class _FinalScreenState extends State<FinalScreen> {
                         style: textStyle,
                       ),
                       Text(
-                        "${(provMdl.finalPercentage * 10).round().toString()}%",
+                        "${(provMdl.finalPercentage).round().toStringAsFixed(2)}%",
                         style: GoogleFonts.coiny(
                             textStyle: const TextStyle(
                                 fontSize: 30,
@@ -62,7 +63,10 @@ class _FinalScreenState extends State<FinalScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Text(element.toString(),style: textStyleNew,),
+                        child: Text(
+                          element.toString(),
+                          style: textStyleNew,
+                        ),
                       ),
                       // SizedBox(height: size.height * 0.13),
                     ],
@@ -81,7 +85,8 @@ class _FinalScreenState extends State<FinalScreen> {
                     padding: const EdgeInsets.all(4.0),
                     height: size.height * 0.065,
                     decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(Radius.circular(30.0)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(30.0)),
                         color: Colors.redAccent.withOpacity(0.5)),
                     child: Text("Try Again",
                         style: textStyle, textAlign: TextAlign.center),
