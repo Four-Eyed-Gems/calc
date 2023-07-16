@@ -26,7 +26,7 @@ class Helper extends ChangeNotifier {
     // } else {
     //   return totalAsciiValue;
     // }
-    return totalAsciiValue % 101;
+    return totalAsciiValue;
   }
 
   List quotes = [];
