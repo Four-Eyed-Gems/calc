@@ -1,10 +1,11 @@
 import 'package:calc/screens/second_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../helper/prov.dart';
+
 class FirstScreen extends StatefulWidget {
   const FirstScreen({Key? key}) : super(key: key);
 
@@ -20,12 +21,11 @@ class _FirstScreenState extends State<FirstScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Column(
+      body: ListView(
+        shrinkWrap: true,
         children: [
           SvgPicture.asset('assets/images/start-screen-img.svg'),
-          const SizedBox(height: 20.0),
           Text(
             'Love',
             textAlign: TextAlign.center,
@@ -36,30 +36,29 @@ class _FirstScreenState extends State<FirstScreen> {
             textAlign: TextAlign.center,
             style: textStyle
           ),
-          const Spacer(),
+          SizedBox(height: 50.0.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
                 onTap: () async {
                   SharedPreferences prefs = await SharedPreferences.getInstance();
-                //  prefs.setString('name',response["user"]["name"]);
                   bool? boolValue = prefs.getBool('boolValue');
                   boolValue != null && boolValue ?
                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((context) => const SecondScreen()))) :
-                  showDialog(size);
+                  showDialog(ScreenUtil().screenHeight.h);
                 },
                 child: Container(
-                  height: size.height * 0.08,
-                  padding: const EdgeInsets.only(left: 10,right: 10.0),
-                  decoration: const BoxDecoration(
+                  height: 55.0.h,
+                  padding: EdgeInsets.symmetric(horizontal: 10.0.w),
+                  decoration:  BoxDecoration(
                       color: Colors.red,
-                      borderRadius: BorderRadius.all(Radius.circular(16)),
+                      borderRadius: BorderRadius.all(Radius.circular(16.w)),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black12,
-                          offset: Offset(0, 3),
-                          blurRadius: 8,
+                          offset: const Offset(0, 3),
+                          blurRadius: 8.r,
                         ),
                       ]
                   ),
@@ -68,13 +67,11 @@ class _FirstScreenState extends State<FirstScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                        Container(
-                         padding: const EdgeInsets.only(bottom: 10.0),
                          child: Text(
                           "Explore Now",
-                          style: GoogleFonts.coiny(color: Colors.white,fontSize: 20.0),
-                      ),
-                       ),
-                       const SizedBox(width: 8),
+                          style: GoogleFonts.coiny(color: Colors.white,fontSize: 17.0.sp),
+                       )),
+                       SizedBox(width: 8.w),
                        const Icon(Icons.arrow_forward_ios_outlined,color: Colors.white),
                     ],
                   ),
@@ -82,50 +79,16 @@ class _FirstScreenState extends State<FirstScreen> {
               ),
             ],
           ),
-         SizedBox(height: size.height / 30,)
-         /* Stack(
-            children: [
-              Container(
-                height: size.height / 8,
-                width: size.width / 5,
-                decoration: const BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(60)
-                  )
-                ),
-                padding: const EdgeInsets.only(left: 7.0,right: 7.0),
-              ),
-              Positioned(
-                top: size.height * 0.005,
-                right: size.height * 0.010,
-                left: size.height * 0.010,
-                child: InkWell(
-                  onTap: () async {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => SecondScreen()
-                      ),
-                    );
-                  },
-                  child:  CircleAvatar(
-                    radius: size.height / 24,
-                    backgroundColor: Colors.white,
-                    child: Icon(Icons.arrow_forward_ios,size: size.height / 24,color: Colors.black),
-                  ),
-                ),
-              ),
-            ],
-          ),*/
+       //  SizedBox(height: 25.h,)
         ],
       ),
     );
   }
 
   final textStyle = GoogleFonts.coiny(
-      textStyle: const TextStyle(fontSize: 50, color: Colors.red));
+      textStyle: TextStyle(fontSize: 50.sp, color: Colors.red));
 
-  showDialog(Size size){
+  showDialog(double size){
     showGeneralDialog(
       context: context,
       barrierLabel: "Barrier",
@@ -138,22 +101,21 @@ class _FirstScreenState extends State<FirstScreen> {
             backgroundColor: Colors.transparent,
             body: Center(
               child: Container(
-                // height: MediaQuery.of(context).size.height / 1.5,
-                margin: const EdgeInsets.symmetric(horizontal: 16),
-                padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
+                margin: EdgeInsets.symmetric(horizontal: 16.w),
+                padding: EdgeInsets.symmetric(vertical: 32.w, horizontal: 24.w),
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.95),
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.circular(40.w),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.3),
                       offset: const Offset(0, 30),
-                      blurRadius: 60,
+                      blurRadius: 60.w,
                     ),
-                    const BoxShadow(
+                    BoxShadow(
                       color: Colors.black45,
-                      offset: Offset(0, 30),
-                      blurRadius: 60,
+                      offset: const Offset(0, 30),
+                      blurRadius: 60.w,
                     ),
                   ],
                 ),
@@ -161,7 +123,6 @@ class _FirstScreenState extends State<FirstScreen> {
                     builder: (context,menuState) {
                       return SingleChildScrollView(
                         child: Column(
-                          // mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -171,7 +132,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                 Text(
                                   "Terms & Conditions",
                                   style: GoogleFonts.poppins(
-                                    fontSize: 20,
+                                    fontSize: 20.sp,
                                     fontWeight: FontWeight.w600,),
                                 ),
                                 const Spacer(),
@@ -183,11 +144,11 @@ class _FirstScreenState extends State<FirstScreen> {
                                 )
                               ],
                             ),
-                            const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 16),
-                              child: Text(
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 16.w),
+                              child: const Text(
                                 "Love Calculator is dedicated to safeguarding the privacy of its users. We don't ask our users for any permissions, and our application doesn't have any age-restricted content.We do not collect any personal information from our users, such as their name, address, or phone number. Additionally, we don't gather any private data, such financial or medical information.We do not share any user data with third parties, except as required by law or as necessary to provide our services. We may disclose user data if we believe it is necessary to protect the rights, property, or safety of Love Calculator, our users, or others.Our application does not contain any age-restricted content.If you have any questions or concerns about our privacy policy, please contact us at foureyedgems@gmail.com",
-                                textAlign: TextAlign.center,
+                                textAlign: TextAlign.justify,
                               ),
                             ),
                             Row(
@@ -197,7 +158,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                   child: CheckboxListTile(
                                     controlAffinity: ListTileControlAffinity.leading,
                                     title:  const Text('Accept Terms & Conditions',style: TextStyle(
-                                        color: Colors.blue
+                                        color: Colors.black
                                     ),),
                                     onChanged: (value){
                                       menuState((){
@@ -209,7 +170,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 20.0),
+                            SizedBox(height: 20.0.h),
                             InkWell(
                               onTap: () async {
                                 if(term){
@@ -222,26 +183,26 @@ class _FirstScreenState extends State<FirstScreen> {
                                 }
                               },
                               child: Container(
-                                height: size.height * 0.08,
+                                height: 55.h,
                                 padding: const EdgeInsets.all(10.0),
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                     color: Colors.red,
-                                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                                    borderRadius: const BorderRadius.all(Radius.circular(16)),
                                     boxShadow: [
                                       BoxShadow(
                                         color: Colors.black12,
-                                        offset: Offset(0, 3),
-                                        blurRadius: 8,
+                                        offset: const Offset(0, 3),
+                                        blurRadius: 8.w,
                                       ),
                                     ]
                                 ),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
-                                  children:const [
+                                  children: [
                                      Text(
                                       "Continue",
-                                      style: TextStyle(color: Colors.white,fontSize: 18.0),
+                                      style: TextStyle(color: Colors.white,fontSize: 18.0.sp),
                                     ),
                                   ],
                                 ),
@@ -280,5 +241,4 @@ class _FirstScreenState extends State<FirstScreen> {
       },
     );
   }
-
 }

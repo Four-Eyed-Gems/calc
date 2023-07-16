@@ -20,12 +20,20 @@ dependencies:
   fluttertoast: ^8.2.1
   provider: ^6.0.5
   shared_preferences: ^2.0.16
+  glassmorphism: ^3.0.0
+  flutter_screenutil: ^5.7.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/ic_launcher.png"
 
 flutter:
 
@@ -47,7 +55,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  #fonts:
+      #- family: Apercu
+        #fonts:
+            #- asset: fonts/Apercu-Regular.ttf
+            #- asset: fonts/Apercu-Bold.ttf
+            #- asset: fonts/Apercu-Light.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

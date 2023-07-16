@@ -1,6 +1,6 @@
-import 'dart:math';
 import 'package:calc/helper/prov.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -20,30 +20,29 @@ class _FinalScreenState extends State<FinalScreen> {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          child: Stack(
+          height: ScreenUtil().screenHeight,
+          child: ListView(
+            physics: BouncingScrollPhysics(),
             children: [
               Consumer<Helper>(builder: (context, data, _) {
-                final random =  Random();
-                var element = provMdl.quotes[random.nextInt(provMdl.quotes.length)];
                 return SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(height: size.height * 0.05),
+                      SizedBox(height: 25.0.h/*size.height * 0.05*/),
                       Image.asset(
                         "assets/images/love.gif",
-                        height: size.height * 0.30,
+                        height: 210.0.h/*size.height * 0.30*/,
                       ),
-                      SizedBox(height: size.height * 0.04),
+                      SizedBox(height: 30.0.h /*size.height * 0.04*/),
                       Text(
                         "You got",
                         style: textStyle,
                       ),
                       Text(
-                        "${(provMdl.finalPercentage * 10).round().toString()}%",
+                        "${(provMdl.finalPercentage).round().toString()}%",
                         style: GoogleFonts.coiny(
-                            textStyle: const TextStyle(
-                                fontSize: 30,
+                            textStyle: TextStyle(
+                                fontSize: 30.sp,
                                 color: Colors.red,
                                 fontWeight: FontWeight.w300)),
                       ),
@@ -55,39 +54,52 @@ class _FinalScreenState extends State<FinalScreen> {
                         "Partner",
                         style: textStyle,
                       ),
-                      SizedBox(height: size.height * 0.08),
+                      SizedBox(height: 40.0.h/*size.height * 0.08*/),
                       Text(
                         "Quotes:",
                         style: textStyleNew,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: Text(element.toString(),style: textStyleNew,),
+                        child: Text(provMdl.strQuotes.toString(),style: textStyleNew,textAlign: TextAlign.center),
                       ),
+                      SizedBox(height: 10.0.h),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          width: 255.0.w/*size.width * 0.7*/,
+                          padding: const EdgeInsets.all(4.0),
+                          height: 45.0.h/*size.height * 0.065*/,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(30.0.r)),
+                              color: Colors.redAccent.withOpacity(0.5)),
+                          child: Text("Try Again",
+                              style: textStyle, textAlign: TextAlign.center),
+                        ),
+                      )
                       // SizedBox(height: size.height * 0.13),
                     ],
                   ),
                 );
               }),
-              Positioned(
-                bottom: 10,
-                right: MediaQuery.of(context).size.width / 7,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    width: size.width * 0.7,
-                    padding: const EdgeInsets.all(4.0),
-                    height: size.height * 0.065,
-                    decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(Radius.circular(30.0)),
-                        color: Colors.redAccent.withOpacity(0.5)),
-                    child: Text("Try Again",
-                        style: textStyle, textAlign: TextAlign.center),
-                  ),
-                ),
-              )
+              // SizedBox(height: 30.0.h),
+              // InkWell(
+              //   onTap: () {
+              //     Navigator.pop(context);
+              //   },
+              //   child: Container(
+              //     width: 255.0.w/*size.width * 0.7*/,
+              //     padding: const EdgeInsets.all(4.0),
+              //     height: 45.0.h/*size.height * 0.065*/,
+              //     decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.all(Radius.circular(30.0.r)),
+              //         color: Colors.redAccent.withOpacity(0.5)),
+              //     child: Text("Try Again",
+              //         style: textStyle, textAlign: TextAlign.center),
+              //   ),
+              // )
             ],
           ),
         ),
@@ -96,9 +108,10 @@ class _FinalScreenState extends State<FinalScreen> {
   }
 
   final textStyle = GoogleFonts.coiny(
-      textStyle: const TextStyle(
-          fontSize: 30, color: Colors.black, fontWeight: FontWeight.w300));
+      textStyle:  TextStyle(
+          fontSize: 30.sp, color: Colors.black, fontWeight: FontWeight.w300));
 
-  final textStyleNew = const TextStyle(
-      fontSize: 23, color: Colors.black, fontWeight: FontWeight.w400);
+  final textStyleNew = TextStyle(
+      fontFamily: 'Apercu',
+      fontSize: 23.sp, color: Colors.black, fontWeight: FontWeight.w400);
 }
