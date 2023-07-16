@@ -10,8 +10,7 @@ class Helper extends ChangeNotifier {
   final random =  Random();
   helper(String name, String partnerName) {
     finalPercentage =
-        ((getPercentage(name) + getPercentage(partnerName) / 2) % 101) / 1.01;
-
+        ((getPercentage(name) + getPercentage(partnerName)) % 101) / 1.01;
     notifyListeners();
   }
 
@@ -26,7 +25,7 @@ class Helper extends ChangeNotifier {
     // } else {
     //   return totalAsciiValue;
     // }
-    return totalAsciiValue;
+    return totalAsciiValue % 101;
   }
 
   List quotes = [];
