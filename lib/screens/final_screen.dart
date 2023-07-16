@@ -84,6 +84,22 @@ class _FinalScreenState extends State<FinalScreen> {
                   ),
                 );
               }),
+              // SizedBox(height: 30.0.h),
+              // InkWell(
+              //   onTap: () {
+              //     Navigator.pop(context);
+              //   },
+              //   child: Container(
+              //     width: 255.0.w/*size.width * 0.7*/,
+              //     padding: const EdgeInsets.all(4.0),
+              //     height: 45.0.h/*size.height * 0.065*/,
+              //     decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.all(Radius.circular(30.0.r)),
+              //         color: Colors.redAccent.withOpacity(0.5)),
+              //     child: Text("Try Again",
+              //         style: textStyle, textAlign: TextAlign.center),
+              //   ),
+              // )
             ],
           ),
         ),
